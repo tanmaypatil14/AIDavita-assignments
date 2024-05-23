@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="       http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd       http://camel.apache.org/schema/blueprint https://camel.apache.org/schema/blueprint/camel-blueprint-2.23.3.xsd       http://camel.apache.org/schema/spring-security http://camel.apache.org/schema/spring-security/camel-spring-security.xsd       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <bean class="com.citiustech.route.PatientRestCrudRoute" id="patientRestCrudRoute"/>
+    <camelContext id="cbr-example-context" xmlns="http://camel.apache.org/schema/blueprint">
+        <propertyPlaceholder id="applicationProperties">
+            <propertiesLocation optional="false"
+                path="application.properties" resolver="classpath"/>
+        </propertyPlaceholder>
+        <routeBuilder ref="patientRestCrudRoute"/>
+    </camelContext>
+    <bean
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="mySqlDriverManager">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3307/Camel_Rest_DSL"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+</blueprint>
