@@ -10,13 +10,6 @@
 	<packaging>bundle</packaging>
 	<name>Fuse CBR Quickstart</name>
 	<description>Camel Content-Based Router Example Crud operation using rest</description>
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
 	<properties>
 		<version.maven-bundle-plugin>3.2.0</version.maven-bundle-plugin>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
