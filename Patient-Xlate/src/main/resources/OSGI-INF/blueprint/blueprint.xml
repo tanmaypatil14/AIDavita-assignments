@@ -5,7 +5,7 @@
     <bean class="org.apache.activemq.ActiveMQConnectionFactory" id="jmsConnectionFactory">
         <property name="brokerURL" value="http://localhost:8161"/>
     </bean>
-    <bean class="com.citiustech.route.XlateDestinationRoute" id="xlateDestination">
+    <bean class="com.citiustech.xlate.route.XlateDestinationRoute" id="xlateDestination">
         <property name="sourceQueue" value="${sourceQueue}"/>
         <property name="destinationURI" value="${destinationURI}"/>
         <property name="destinationQueue" value="${destinationQueue}"/>
@@ -13,8 +13,8 @@
     <!-- OSGI blueprint property placeholder -->
     <cm:property-placeholder id="myblueprint.placeholder" persistent-id="camel.blueprint">
         <cm:default-properties>
-            <cm:property name="sourceQueue" value="activemq:queue:inboundDestinationQueue"/>
-            <cm:property name="destinationURI" value="file:data/demographics/?fileName=${date:now:yyyyMMdd}/patient.json"/>
+            <cm:property name="sourceQueue" value="activemq:queue:patientInboundDestinationQueue"/>
+            <cm:property name="destinationURI" value="file:src/main/resources/data/demographics/?fileName=${date:now:yyyyMMdd}/patient.json"/>
             <cm:property name="destinationQueue" value="activemq:topic:xlateDestinationQueue"/>
         </cm:default-properties>
     </cm:property-placeholder>

@@ -1,12 +1,12 @@
-package com.citiustech.route;
+package com.citiustech.xlate.route;
 
 import org.apache.activemq.ConnectionFailedException;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.file.GenericFileOperationFailedException;
 
-import com.citiustech.aggregator.JsonAggregationStrategy;
-import com.citiustech.processor.SplitterProcessor;
+import com.citiustech.xlate.aggregator.JsonAggregationStrategy;
+import com.citiustech.xlate.processor.SplitterProcessor;
 
 public class XlateDestinationRoute extends RouteBuilder{
 	
@@ -36,10 +36,7 @@ public class XlateDestinationRoute extends RouteBuilder{
 	@Override
 	public void configure() throws Exception {
 		
-		onException(Exception.class)
-		.log(LoggingLevel.ERROR, "Exception occurred: ${exception.message}")
-		.handled(true);
-		
+//		it handles the exception while creating a file
 		onException(GenericFileOperationFailedException.class)
 		.log(LoggingLevel.ERROR, "Generic file exception occured while creating file : ${exception.message}")
 		.handled(true);
@@ -48,8 +45,11 @@ public class XlateDestinationRoute extends RouteBuilder{
 		.handled(true)
 		.log(LoggingLevel.ERROR, "Failed to connect ActiveMQ : ${exception.message}");
 		
+		onException(Exception.class)
+		.log(LoggingLevel.ERROR, "Exception occurred: ${exception.message}")
+		.handled(true);
 
-//	     from("file:data/in?noop=true")
+//	     from("file:src/main/resources/data/in?noop=true")
 		 from(getSourceQueue())
 	       .log(LoggingLevel.INFO, "Received treatment detail from inbound destination queue to xlate : ${body}")
 	       .process(new SplitterProcessor())

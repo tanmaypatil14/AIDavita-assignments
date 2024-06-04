@@ -1,11 +1,8 @@
-package com.citiustech.aggregator;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+package com.citiustech.xlate.aggregator;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
+import org.json.JSONArray;
 
 public class JsonAggregationStrategy implements AggregationStrategy {
 
@@ -13,15 +10,15 @@ public class JsonAggregationStrategy implements AggregationStrategy {
 	public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
 		
 		Object newBody = newExchange.getIn().getBody(Object.class);
-		LinkedList<Object> list = null;
+		JSONArray list = null;
 		if (oldExchange == null) {
-			list = new LinkedList<Object>();
-			list.add(newBody);
+			list = new JSONArray();
+			list.put(newBody);
 			newExchange.getIn().setBody(list);
 			return newExchange;
 		} else {
-			list = oldExchange.getIn().getBody(LinkedList.class);
-			list.add(newBody);
+			list = oldExchange.getIn().getBody(JSONArray.class);
+			list.put(newBody);
 			return oldExchange;
 		}
 
