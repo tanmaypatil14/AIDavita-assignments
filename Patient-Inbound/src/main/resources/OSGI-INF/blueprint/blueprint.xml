@@ -7,7 +7,7 @@
         <property name="userName" value="admin"/>
         <property name="password" value="admin"/>
     </bean>
-    <bean class="com.citiustech.route.InboundXlateRoute" id="inboundRoute">
+    <bean class="com.citiustech.inbound.route.InboundXlateRoute" id="inboundRoute">
         <property name="sourceURI" value="${sourceURI}"/>
         <property name="treatmentURI" value="${treatmentURI}"/>
         <property name="destinationQueue" value="${destinationQueue}"/>
@@ -15,9 +15,9 @@
     <!-- OSGI blueprint property placeholder -->
     <cm:property-placeholder id="myblueprint.placeholder" persistent-id="camel.blueprint">
         <cm:default-properties>
-            <cm:property name="sourceURI" value="file:data/in?noop=true"/>
-            <cm:property name="treatmentURI" value="http://localhost:8082/treatment/"/>
-            <cm:property name="destinationQueue" value="activemq:queue:inboundDestinationQueue"/>
+            <cm:property name="sourceURI" value="file:src/main/resources/data/in?noop=true"/>
+            <cm:property name="treatmentURI" value="http://localhost:8082/treatment/${body}"/>
+            <cm:property name="destinationQueue" value="activemq:queue:patientInboundDestinationQueue"/>
         </cm:default-properties>
     </cm:property-placeholder>
     <camelContext id="cbr-example-context" xmlns="http://camel.apache.org/schema/blueprint">

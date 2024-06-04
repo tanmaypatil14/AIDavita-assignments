@@ -155,7 +155,10 @@
 					<groupId>org.apache.camel</groupId>
 					<artifactId>camel-jackson</artifactId>
 				</dependency>
-
+				<dependency>
+					<groupId>org.json</groupId>
+					<artifactId>json</artifactId>
+				</dependency>
 				<dependency>
 					<groupId>org.apache.camel</groupId>
 					<artifactId>camel-test-blueprint</artifactId>
