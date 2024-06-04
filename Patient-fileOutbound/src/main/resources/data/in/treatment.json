@@ -4,7 +4,7 @@
 	"treatmentStartDateTime": "2024-05-30 13:23:44",
 	"treatmentEndDateTime": "2024-05-30 15:23:44",
 	"nurseDetails": {
-		"nurseId": 21322,
+		"nurseId": 21325,
 		"firstName": "Dona",
 		"lastName": "Anderson",
 		"dob": "1990-03-04",
@@ -33,6 +33,6 @@
 		"gender": "Male",
 		"contactNumber": "9284008545",
 		"role": "Patient",
-		"active": false
+		"active": true
 	}
 }

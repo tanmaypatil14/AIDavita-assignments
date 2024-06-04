@@ -1,11 +1,11 @@
-package com.citiustech.route;
+package com.citiustech.file.outbound.route;
 
 import org.apache.activemq.ConnectionFailedException;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.file.GenericFileOperationFailedException;
 
-import com.citiustech.processor.NurseProcessor;
+import com.citiustech.file.outbound.processor.NurseProcessor;
 
 public class NurseDetailsFileRoute extends RouteBuilder {
 	
@@ -46,6 +46,7 @@ public class NurseDetailsFileRoute extends RouteBuilder {
 		.log(LoggingLevel.ERROR, "Exception occurred: ${exception.message}")
 		.handled(true);
 		
+//		it handles the exception while creating a file
 		onException(GenericFileOperationFailedException.class)
 		.log(LoggingLevel.ERROR, "Generic file exception occured while creating file : ${exception.message}")
 		.handled(true);
@@ -55,7 +56,7 @@ public class NurseDetailsFileRoute extends RouteBuilder {
 		.log(LoggingLevel.ERROR, "Failed to connect ActiveMQ : ${exception.message}");
 		
 //		from(getSourceQueue())
-		from("file:data/in?noop=true")
+		from("file:src/main/resources/data/in?noop=true")
 				.log(LoggingLevel.INFO, "Received treatmentDetails from topic : ${body}")
 				.process(new NurseProcessor())
 				.log(LoggingLevel.INFO, "Received nurse detail from processor : ${body}, for patient id : ${header.patientId}")
@@ -68,7 +69,9 @@ public class NurseDetailsFileRoute extends RouteBuilder {
 				       .to(getActiveDestinationURI())
 				    .otherwise()
 			       	   .log(LoggingLevel.INFO, "Received nurse detail for in active patient : ${body}")
-			       	   .to(getInActiveDestinationURI());
+			       	   .to(getInActiveDestinationURI())
+			       	   .end()
+			     .log(LoggingLevel.INFO, "Nurse details stored in folder as per the patient status");
 	}
 
 }
