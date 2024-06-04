@@ -55,7 +55,9 @@ public class UpdateEquipmentDetailsRoute extends RouteBuilder {
 		           .log(LoggingLevel.INFO, "Received active equipment detail from processor : ${body}")
 		           .to(getUpdateEquipementQuery())
 		        .otherwise()
-		           .log(LoggingLevel.INFO, "Received in active equipment detail from processor : ${body}");
+		           .log(LoggingLevel.INFO, "Received in active equipment detail from processor : ${body}")
+		           .end()
+		        .log(LoggingLevel.INFO, "Equipment detail flag updated accourding to patient status");
 	}
 
 }
