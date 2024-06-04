@@ -84,7 +84,7 @@ public class InboundXlateRoute extends RouteBuilder implements Serializable {
 	      .setHeader(Exchange.HTTP_METHOD, constant("GET"))
 	      .toD(getTreatmentURI()).convertBodyTo(String.class)
 	      .log(LoggingLevel.INFO, "Received treatment details from Rest API : ${body}")
-	      .to("direct:restResult");
+	      .to("direct:restResult").id("patientreportqueue");
 
 	      
 		from("direct:restResult")
