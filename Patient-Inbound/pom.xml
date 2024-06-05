@@ -89,9 +89,9 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Bundle-SymbolicName>Assignment3-Inbound</Bundle-SymbolicName>
+						<Bundle-SymbolicName>Patient-Inbound</Bundle-SymbolicName>
 						<Bundle-Name>Camel Content-Based Router Example
-							[Assignment3-Inbound]</Bundle-Name>
+							[Patient-Inbound]</Bundle-Name>
 					</instructions>
 				</configuration>
 			</plugin>
