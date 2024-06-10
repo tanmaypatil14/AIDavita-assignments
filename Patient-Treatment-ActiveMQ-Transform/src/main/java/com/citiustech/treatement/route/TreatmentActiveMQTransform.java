@@ -1,14 +1,14 @@
-package com.citiustech.xlate.route;
+package com.citiustech.treatement.route;
 
 import org.apache.activemq.ConnectionFailedException;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.file.GenericFileOperationFailedException;
 
-import com.citiustech.xlate.aggregator.JsonAggregationStrategy;
-import com.citiustech.xlate.processor.SplitterProcessor;
+import com.citiustech.treatement.aggregator.JsonAggregationStrategy;
+import com.citiustech.treatement.processor.SplitterProcessor;
 
-public class XlateDestinationRoute extends RouteBuilder{
+public class TreatmentActiveMQTransform extends RouteBuilder{
 	
 	private String sourceQueue;
 	private String destinationURI;
@@ -49,8 +49,8 @@ public class XlateDestinationRoute extends RouteBuilder{
 		.log(LoggingLevel.ERROR, "Exception occurred: ${exception.message}")
 		.handled(true);
 
-//	     from("file:src/main/resources/data/in?noop=true")
-		 from(getSourceQueue())
+	     from("file:src/main/resources/data/in?noop=true")
+//		 from(getSourceQueue())
 	       .log(LoggingLevel.INFO, "Received treatment detail from inbound destination queue to xlate : ${body}")
 	       .process(new SplitterProcessor())
 	       .log(LoggingLevel.INFO, "Sent treatment detail to processor : ${body}");

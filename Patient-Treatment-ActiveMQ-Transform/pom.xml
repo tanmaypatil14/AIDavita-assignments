@@ -4,8 +4,8 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.citiustech.xlate</groupId>
-	<artifactId>camel-blueprint-cbr</artifactId>
+	<groupId>com.citiustech.treatement</groupId>
+	<artifactId>Patient-Treatment-ActiveMQ-Transform</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 	<name>Fuse CBR Quickstart</name>
@@ -92,7 +92,7 @@
 					<instructions>
 						<Bundle-SymbolicName>Patient-Xlate</Bundle-SymbolicName>
 						<Bundle-Name>Camel Content-Based Router Example
-							[Patient-Xlate]</Bundle-Name>
+							[Patient-Treatment-ActiveMQ-Transform]</Bundle-Name>
 					</instructions>
 				</configuration>
 			</plugin>

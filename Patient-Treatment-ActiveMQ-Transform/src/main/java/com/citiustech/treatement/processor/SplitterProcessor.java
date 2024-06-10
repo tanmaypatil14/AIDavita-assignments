@@ -1,4 +1,4 @@
-package com.citiustech.xlate.processor;
+package com.citiustech.treatement.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

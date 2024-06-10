@@ -1,4 +1,4 @@
-package com.citiustech.xlate.aggregator;
+package com.citiustech.treatement.aggregator;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
