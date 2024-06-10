@@ -17,7 +17,7 @@ public class DiagnosisActiveMQOutTest extends CamelBlueprintTestSupport {
 	@Override
 	protected String getBlueprintDescriptor() {
 		// TODO Auto-generated method stub
-		return "OSGI-INF/blueprint/diagnosis-activemq-out-blueprint.xml";
+		return "OSGI-INF/blueprint/patient-diagnosis-activemq-out-blueprint.xml";
 	}
 
 	@Test

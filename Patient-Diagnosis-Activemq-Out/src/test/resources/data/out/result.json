@@ -1,6 +1,1 @@
-{
-	"diagnosisId": 215321,
-	"patientId": 1235,
-	"diagnosis": "Type1 Diabetes",
-	"description": "Morning blood test before lunch"
-}
+{"diagnosisId":215321,"patientId":1235,"diagnosis":"Type1 Diabetes","description":"Morning blood test before lunch"}

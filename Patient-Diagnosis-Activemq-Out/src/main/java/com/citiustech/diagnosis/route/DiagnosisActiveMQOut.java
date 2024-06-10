@@ -29,7 +29,7 @@ public class DiagnosisActiveMQOut extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		
+
 		onException(ConnectionFailedException.class)
 		.handled(true)
 		.log(LoggingLevel.ERROR, "Failed to connect ActiveMQ : ${exception.message}");
@@ -38,14 +38,15 @@ public class DiagnosisActiveMQOut extends RouteBuilder {
 		.log(LoggingLevel.ERROR, "Exception occurred: ${exception.message}")
 		.handled(true);
 		
-//		from(getSourceQueue())
-		from("file:src/main/resources/data/in?noop=true").routeId("diagnosisActiveMQOut")
-				.log(LoggingLevel.INFO, "Received treatmentDetails from topic : ${body}")
-				.process(new UpdateDiagnosisProcessor())
-				.log(LoggingLevel.INFO, "Received updated diagnosis detail from processor : ${body}")
-				.convertBodyTo(String.class)
-				.to(getDestinationQueue())
-				.log(LoggingLevel.INFO, "Deliverd to Diagnosis Amq subscriber : ${body}");
+		from(getSourceQueue())
+//		from("file:src/main/resources/data/in?noop=true")
+		   .routeId("diagnosisActiveMQOut")
+		   .log(LoggingLevel.INFO, "Received treatmentDetails from topic : ${body}")
+		   .process(new UpdateDiagnosisProcessor())
+		   .log(LoggingLevel.INFO, "Received updated diagnosis detail from processor : ${body}")
+		   .convertBodyTo(String.class)
+		   .to(getDestinationQueue())
+		   .log(LoggingLevel.INFO, "Deliverd to Diagnosis Amq subscriber : ${body}");
 
 	}
 
