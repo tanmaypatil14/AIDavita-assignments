@@ -1,0 +1,11 @@
+	{
+	"firstName": "Kavita",
+	"lastName": "Patil",
+	"role": "Patient",
+	"gender": "Female",
+	"patientId": 1234,
+	"dob": "1997-07-14",
+	"contactNumber": "9284008545",
+	"active": true,
+	"age": 27
+}
