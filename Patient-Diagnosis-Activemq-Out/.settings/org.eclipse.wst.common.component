@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-        
-    <wb-module deploy-name="Patient-DignosisOutbound">
                 
-        <wb-resource deploy-path="/" source-path="/src/main/resources"/>
-                
-        <wb-resource deploy-path="/" source-path="/src/main/java"/>
-            
-    </wb-module>
     
+    
+    <wb-module deploy-name="Patient-Diagnosis-Activemq-Out">
+                                
+        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/resources"/>
+                                
+        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/java"/>
+                            
+    
+    
+    </wb-module>
+            
+
+
 </project-modules>

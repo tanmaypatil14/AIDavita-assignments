@@ -1,4 +1,4 @@
-package com.citiustech.processor;
+package com.citiustech.diagnosis.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

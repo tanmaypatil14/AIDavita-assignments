@@ -1,12 +1,12 @@
-package com.citiustech.route;
+package com.citiustech.diagnosis.route;
 
 import org.apache.activemq.ConnectionFailedException;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
-import com.citiustech.processor.UpdateDiagnosisProcessor;
+import com.citiustech.diagnosis.processor.UpdateDiagnosisProcessor;
 
-public class DiagnosisAmqSubsciberRoute extends RouteBuilder {
+public class DiagnosisActiveMQOut extends RouteBuilder {
 	
 	private String sourceQueue;
 	private String destinationQueue;
@@ -30,16 +30,16 @@ public class DiagnosisAmqSubsciberRoute extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		
-		onException(Exception.class)
-		.log(LoggingLevel.ERROR, "Exception occurred: ${exception.message}")
-		.handled(true);
-		
 		onException(ConnectionFailedException.class)
 		.handled(true)
 		.log(LoggingLevel.ERROR, "Failed to connect ActiveMQ : ${exception.message}");
 		
-		from(getSourceQueue())
-//		from("file:data/in?noop=true")
+		onException(Exception.class)
+		.log(LoggingLevel.ERROR, "Exception occurred: ${exception.message}")
+		.handled(true);
+		
+//		from(getSourceQueue())
+		from("file:src/main/resources/data/in?noop=true").routeId("diagnosisActiveMQOut")
 				.log(LoggingLevel.INFO, "Received treatmentDetails from topic : ${body}")
 				.process(new UpdateDiagnosisProcessor())
 				.log(LoggingLevel.INFO, "Received updated diagnosis detail from processor : ${body}")
