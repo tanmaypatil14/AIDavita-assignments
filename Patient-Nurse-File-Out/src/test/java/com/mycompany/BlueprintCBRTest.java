@@ -86,6 +86,9 @@ public class BlueprintCBRTest extends CamelBlueprintTestSupport {
 	 */
 	private String getFileContents(String path) throws Exception {
 		Path filePath = new File(path).toPath();
-		return new String(Files.readAllBytes(filePath), StandardCharsets.UTF_8);
+		System.out.println("file path : " + filePath);
+		String content = new String(Files.readAllBytes(filePath), StandardCharsets.UTF_8);
+		System.out.println("Content : " + content);
+		return content;
 	}
 }

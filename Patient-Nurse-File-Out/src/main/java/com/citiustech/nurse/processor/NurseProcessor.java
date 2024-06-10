@@ -1,4 +1,4 @@
-package com.citiustech.file.outbound.processor;
+package com.citiustech.nurse.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

@@ -1,13 +1,14 @@
-package com.citiustech.file.outbound.route;
+package com.citiustech.nurse.route;
 
 import org.apache.activemq.ConnectionFailedException;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.file.GenericFileOperationFailedException;
+import org.apache.camel.model.dataformat.JsonLibrary;
 
-import com.citiustech.file.outbound.processor.NurseProcessor;
+import com.citiustech.nurse.processor.NurseProcessor;
 
-public class NurseDetailsFileRoute extends RouteBuilder {
+public class NurseFileOut extends RouteBuilder {
 	
 	private String sourceQueue;
 	private String activeDestinationURI;
@@ -63,12 +64,16 @@ public class NurseDetailsFileRoute extends RouteBuilder {
 				.convertBodyTo(String.class)
 				.setHeader("CamelFileName", simple(getFileName()))
 				.setBody(simple("${body}"))
+				.unmarshal().json(JsonLibrary.Jackson)
+				.marshal().jacksonxml(true)
+				.convertBodyTo(String.class)
+				.transform(simple("${body.replace('LinkedHashMap', 'NurseDetail')}"))
 				.choice()
 				    .when(header("isActive").isEqualTo(true))
-				       .log(LoggingLevel.INFO, "Received nurse detail for active patient : ${body}")
+				       .log(LoggingLevel.INFO, "Received nurse detail for active patient : \n${body}")
 				       .to(getActiveDestinationURI())
 				    .otherwise()
-			       	   .log(LoggingLevel.INFO, "Received nurse detail for in active patient : ${body}")
+			       	   .log(LoggingLevel.INFO, "Received nurse detail for inactive patient : \n${body}")
 			       	   .to(getInActiveDestinationURI())
 			       	   .end()
 			     .log(LoggingLevel.INFO, "Nurse details stored in folder as per the patient status");

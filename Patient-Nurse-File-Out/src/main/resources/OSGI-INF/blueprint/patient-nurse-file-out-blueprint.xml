@@ -5,7 +5,7 @@
     <bean class="org.apache.activemq.ActiveMQConnectionFactory" id="jmsConnectionFactory">
         <property name="brokerURL" value="http://localhost:8161"/>
     </bean>
-    <bean class="com.citiustech.file.outbound.route.NurseDetailsFileRoute" id="nurseDetailsFileRoute">
+    <bean class="com.citiustech.nurse.route.NurseFileOut" id="nurseFileOut">
         <property name="sourceQueue" value="${sourceQueue}"/>
         <property name="activeDestinationURI" value="${activeDestinationURI}"/>
         <property name="inActiveDestinationURI" value="${inActiveDestinationURI}"/>
@@ -17,10 +17,10 @@
             <cm:property name="sourceQueue" value="activemq:topic:xlateDestinationQueue"/>
             <cm:property name="activeDestinationURI" value="file:src/main/resources/data/Nurse/Active"/>
             <cm:property name="inActiveDestinationURI" value="file:src/main/resources/data/Nurse/Inactive"/>
-            <cm:property name="fileName" value="/${date:now:yyyyMMdd}/Nurse-${header.nurseId}.json"/>
+            <cm:property name="fileName" value="/${date:now:yyyyMMdd}/Nurse-${header.nurseId}.xml"/>
         </cm:default-properties>
     </cm:property-placeholder>
-    <camelContext id="cbr-example-context" xmlns="http://camel.apache.org/schema/blueprint">
-        <routeBuilder ref="nurseDetailsFileRoute"/>
+    <camelContext id="nurse-file-out" xmlns="http://camel.apache.org/schema/blueprint">
+        <routeBuilder ref="nurseFileOut"/>
     </camelContext>
 </blueprint>
