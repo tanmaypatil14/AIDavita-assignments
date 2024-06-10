@@ -16,7 +16,7 @@ public class TreatmentRestInTest extends CamelBlueprintTestSupport {
 
 	@Override
 	protected String getBlueprintDescriptor() {
-		return "OSGI-INF/blueprint/treatement-rest-in-blueprint.xml";
+		return "OSGI-INF/blueprint/patient-treatement-rest-in-blueprint.xml";
 
 	}
 
