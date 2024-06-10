@@ -1,4 +1,4 @@
-package com.citiustech.route;
+package com.citiustech.equipment.route;
 
 import java.sql.SQLException;
 
@@ -6,9 +6,9 @@ import org.apache.activemq.ConnectionFailedException;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
-import com.citiustech.processor.UpdateEquipmentFlagProcessor;
+import com.citiustech.equipment.processor.UpdateEquipmentFlagProcessor;
 
-public class UpdateEquipmentDetailsRoute extends RouteBuilder {
+public class EquipmentMysqlOut extends RouteBuilder {
 	
 	private String sourceQueue;
 	private String updateEquipementQuery;
