@@ -1,0 +1,10 @@
+<NurseDetail>
+  <firstName>Kelly</firstName>
+  <lastName>Anderson</lastName>
+  <role>Nurse</role>
+  <gender>Female</gender>
+  <dob>1990-03-04</dob>
+  <nurseId>21323</nurseId>
+  <contactNumber>8353275332</contactNumber>
+  <age>34</age>
+</NurseDetail>

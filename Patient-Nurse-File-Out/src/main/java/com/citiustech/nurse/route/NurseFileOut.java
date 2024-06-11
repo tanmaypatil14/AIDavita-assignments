@@ -57,7 +57,7 @@ public class NurseFileOut extends RouteBuilder {
 		.log(LoggingLevel.ERROR, "Failed to connect ActiveMQ : ${exception.message}");
 		
 //		from(getSourceQueue())
-		from("file:src/main/resources/data/in?noop=true")
+		from("file:src/main/resources/data/in?noop=true").routeId("nurseFileOut")
 				.log(LoggingLevel.INFO, "Received treatmentDetails from topic : ${body}")
 				.process(new NurseProcessor())
 				.log(LoggingLevel.INFO, "Received nurse detail from processor : ${body}, for patient id : ${header.patientId}")

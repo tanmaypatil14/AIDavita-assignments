@@ -1,0 +1,39 @@
+
+    {
+	"treatmentId": 4326516,
+	"treatmentName": "Blood Test",
+	"treatmentStartDateTime": "2024-05-30 13:23:44",
+	"treatmentEndDateTime": "2024-05-30 15:23:44",
+	"nurseDetails": {
+		"nurseId": 21323,
+		"firstName": "Linda",
+		"lastName": "Anderson",
+		"dob": "1990-03-04",
+		"age": 34,
+		"gender": "Female",
+		"contactNumber": "8353275332",
+		"role": "Nurse"
+	},
+	"diagnosisDetails": {
+		"diagnosisId": 215321,
+		"diagnosis": "Type1 Diabetes",
+		"description": "Morning blood test before lunch"
+	},
+	"equipmentDetails": {
+		"equipmentId": 23243,
+		"equipmentName": "Glucose Monitor",
+		"inUsed": false,
+		"allocationDateTime": "2024-05-30 13:23:44"
+	},
+	"patientDemographicDetails": {
+		"patientId": 1234,
+		"firstName": "Tanmay",
+		"lastName": "Patil",
+		"dob": "1997-07-14",
+		"age": 27,
+		"gender": "Male",
+		"contactNumber": "9284008545",
+		"role": "Patient",
+		"active": true
+	}
+}
